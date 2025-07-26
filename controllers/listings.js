@@ -19,6 +19,26 @@ module.exports.showListing = async(req,res)=>{
     res.render("listings/show.ejs", {listing});
 };
 
+module.exports.search = async (req, res) => {
+  const query = req.query.q || '';
+
+  if (!query.trim()) {
+    // If empty query, redirect or show all
+    return res.redirect('/listings');
+  }
+
+  const listings = await Listing.find({
+    $or: [
+      { title: { $regex: query, $options: 'i' } },
+      { location: { $regex: query, $options: 'i' } },
+      { description: { $regex: query, $options: 'i' } },
+      { category: { $regex: query, $options: 'i' } },
+    ]
+  });
+
+  res.render('listings/searchResults', { listings, query });
+};
+
 module.exports.newListing = async (req, res, next) => {
      const data = req.body.listing;
 
@@ -34,6 +54,7 @@ module.exports.newListing = async (req, res, next) => {
     req.flash("success", "New Listing Created!");
     res.redirect('/listings');
 };
+
 
 module.exports.editListing = async(req,res)=>{
     const {id} = req.params;
