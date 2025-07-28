@@ -63,9 +63,9 @@ const sessionOptions = {
 
 
 //root route
-// app.get('/', (req,res)=> {
-//     res.send("Home")
-// })
+app.get('/', (req, res) => {
+    res.redirect('/listings'); // or render('home') if you have a homepage view
+});
 
 
 app.use(session(sessionOptions));
