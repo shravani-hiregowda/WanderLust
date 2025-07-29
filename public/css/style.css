@@ -130,3 +130,87 @@ body {
   object-fit: cover; /* keeps the aspect ratio neat */
   border-radius: 0.5rem;
 }
+
+/* filters */
+.filters-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    margin-top: 1rem;
+    flex-wrap: nowrap;
+}
+
+#filters {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 2rem;
+    max-width: 90%;
+    scrollbar-width: thin;
+    scrollbar-color: white;
+    scroll-behavior: smooth;
+}
+
+
+.filter {
+    margin-right: 2rem;
+    text-align: center;
+    opacity: 0.6;
+}
+.filter a {
+    text-decoration: none;
+    color: black;
+}
+
+.filter:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.filter p {
+    font-size: small;
+}
+
+.tax-toggle {
+    white-space: nowrap;
+    margin-right: 0.1rem;
+    margin-left: 1rem;
+}
+
+
+.tax {
+    display: none;
+}
+
+
+@media (max-width: 768px) {
+  .filters-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #filters {
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .tax-toggle {
+    align-self: flex-end;
+  }
+}
+
+/* Small screens: phones */
+@media (max-width: 480px) {
+  .filter {
+    margin-right: 1rem;
+  }
+
+  .tax-toggle {
+    font-size: 0.9rem;
+  }
+
+  .form-check-label {
+    font-size: 0.85rem;
+  }
+}
