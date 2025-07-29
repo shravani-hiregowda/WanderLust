@@ -19,6 +19,16 @@ body {
     color: #222222;
 }
 
+.navbar-collapse {
+    background-color: white !important;
+    padding: 1rem;
+    z-index: 999;
+}
+
+.navbar-nav {
+    background-color: white;
+}
+
 /* footer */
 .airbnb-footer {
     background-color: #f7f7f7;
